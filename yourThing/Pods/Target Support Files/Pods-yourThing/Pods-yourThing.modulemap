@@ -1,0 +1,6 @@
+framework module Pods_yourThing {
+  umbrella header "Pods-yourThing-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -14,6 +14,8 @@
 		524BCC8A2189B5400089EA1B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 524BCC882189B5400089EA1B /* LaunchScreen.storyboard */; };
 		524BCC952189B5400089EA1B /* yourThingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCC942189B5400089EA1B /* yourThingTests.swift */; };
 		524BCCA02189B5400089EA1B /* yourThingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCC9F2189B5400089EA1B /* yourThingUITests.swift */; };
+		A71F588C2189BCF500300C2D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A71F588B2189BCF500300C2D /* Podfile */; };
+		F800B5E4F1FCB34070B42B08 /* Pods_yourThing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		524BCC9B2189B5400089EA1B /* yourThingUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = yourThingUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		524BCC9F2189B5400089EA1B /* yourThingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = yourThingUITests.swift; sourceTree = "<group>"; };
 		524BCCA12189B5400089EA1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A23F9731A7817F9F1B7D10D6 /* Pods-yourThing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourThing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-yourThing/Pods-yourThing.debug.xcconfig"; sourceTree = "<group>"; };
+		A71F588B2189BCF500300C2D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yourThing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDDED8A3919C5B505AE4D31E /* Pods-yourThing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourThing.release.xcconfig"; path = "Pods/Target Support Files/Pods-yourThing/Pods-yourThing.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F800B5E4F1FCB34070B42B08 /* Pods_yourThing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,10 +84,13 @@
 		524BCC732189B53F0089EA1B = {
 			isa = PBXGroup;
 			children = (
+				A71F588B2189BCF500300C2D /* Podfile */,
 				524BCC7E2189B53F0089EA1B /* yourThing */,
 				524BCC932189B5400089EA1B /* yourThingTests */,
 				524BCC9E2189B5400089EA1B /* yourThingUITests */,
 				524BCC7D2189B53F0089EA1B /* Products */,
+				8080135841E7A72E8BAF677D /* Pods */,
+				D2B61A27ACC1424DE415FF2A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +135,23 @@
 			path = yourThingUITests;
 			sourceTree = "<group>";
 		};
+		8080135841E7A72E8BAF677D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A23F9731A7817F9F1B7D10D6 /* Pods-yourThing.debug.xcconfig */,
+				DDDED8A3919C5B505AE4D31E /* Pods-yourThing.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D2B61A27ACC1424DE415FF2A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +159,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 524BCCA42189B5400089EA1B /* Build configuration list for PBXNativeTarget "yourThing" */;
 			buildPhases = (
+				2D40037FD4251F4FAAFC93A7 /* [CP] Check Pods Manifest.lock */,
 				524BCC782189B53F0089EA1B /* Sources */,
 				524BCC792189B53F0089EA1B /* Frameworks */,
 				524BCC7A2189B53F0089EA1B /* Resources */,
+				50CF753643B79B9112AF0D1A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -231,6 +260,7 @@
 			files = (
 				524BCC8A2189B5400089EA1B /* LaunchScreen.storyboard in Resources */,
 				524BCC872189B5400089EA1B /* Assets.xcassets in Resources */,
+				A71F588C2189BCF500300C2D /* Podfile in Resources */,
 				524BCC852189B53F0089EA1B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +280,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D40037FD4251F4FAAFC93A7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-yourThing-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		50CF753643B79B9112AF0D1A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-yourThing/Pods-yourThing-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-yourThing/Pods-yourThing-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		524BCC782189B53F0089EA1B /* Sources */ = {
@@ -430,16 +509,17 @@
 		};
 		524BCCA52189B5400089EA1B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A23F9731A7817F9F1B7D10D6 /* Pods-yourThing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R5G2379KS6;
+				DEVELOPMENT_TEAM = GSLF88D338;
 				INFOPLIST_FILE = yourThing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sw-maker.yourThing";
+				PRODUCT_BUNDLE_IDENTIFIER = "sw-maker.yourThing2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -448,16 +528,17 @@
 		};
 		524BCCA62189B5400089EA1B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDDED8A3919C5B505AE4D31E /* Pods-yourThing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = R5G2379KS6;
+				DEVELOPMENT_TEAM = GSLF88D338;
 				INFOPLIST_FILE = yourThing/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "sw-maker.yourThing";
+				PRODUCT_BUNDLE_IDENTIFIER = "sw-maker.yourThing2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
