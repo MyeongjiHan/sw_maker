@@ -37,6 +37,7 @@ class SecondViewController: UIViewController, XMLParserDelegate {
         for item in placeAddrs {
             resultPlaces = resultPlaces + "\n\n" + "\(item)"
             print("습득장소는 \(item)\n")
+            //print("\(resultPlaces)")
         }
         
         nameLabel.text = resultPlaces

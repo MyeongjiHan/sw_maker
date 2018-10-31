@@ -16,6 +16,7 @@
 		524BCCA02189B5400089EA1B /* yourThingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCC9F2189B5400089EA1B /* yourThingUITests.swift */; };
 		524BCCB62189E7280089EA1B /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCCB52189E7280089EA1B /* SecondViewController.swift */; };
 		524BCCB82189E7380089EA1B /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BCCB72189E7380089EA1B /* InfoTableViewController.swift */; };
+		5251DCD62189F44700400A0B /* ResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5251DCD52189F44700400A0B /* ResultTableViewController.swift */; };
 		A71F588C2189BCF500300C2D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A71F588B2189BCF500300C2D /* Podfile */; };
 		F800B5E4F1FCB34070B42B08 /* Pods_yourThing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		524BCCA12189B5400089EA1B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		524BCCB52189E7280089EA1B /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		524BCCB72189E7380089EA1B /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		5251DCD52189F44700400A0B /* ResultTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultTableViewController.swift; sourceTree = "<group>"; };
 		A23F9731A7817F9F1B7D10D6 /* Pods-yourThing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourThing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-yourThing/Pods-yourThing.debug.xcconfig"; sourceTree = "<group>"; };
 		A71F588B2189BCF500300C2D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
 		BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yourThing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 				524BCC8B2189B5400089EA1B /* Info.plist */,
 				524BCCB52189E7280089EA1B /* SecondViewController.swift */,
 				524BCCB72189E7380089EA1B /* InfoTableViewController.swift */,
+				5251DCD52189F44700400A0B /* ResultTableViewController.swift */,
 			);
 			path = yourThing;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 			files = (
 				524BCCB62189E7280089EA1B /* SecondViewController.swift in Sources */,
 				524BCC822189B53F0089EA1B /* ViewController.swift in Sources */,
+				5251DCD62189F44700400A0B /* ResultTableViewController.swift in Sources */,
 				524BCC802189B53F0089EA1B /* AppDelegate.swift in Sources */,
 				524BCCB82189E7380089EA1B /* InfoTableViewController.swift in Sources */,
 			);
