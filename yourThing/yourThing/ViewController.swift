@@ -17,7 +17,7 @@ import UIKit
 import GoogleMaps
 import GooglePlaces
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, GMSMapViewDelegate {
     
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
@@ -99,17 +99,25 @@ class ViewController: UIViewController {
         // this view controller, not one further up the chain.
         definesPresentationContext = true
         
-        let position1 = CLLocationCoordinate2D(latitude: 37.50, longitude: 126.96)
-        let marker = GMSMarker(position: position1)
-        marker.title = "중앙대"
-        marker.map = mapView
+        let position1 = CLLocationCoordinate2D(latitude: 37.505186, longitude: 126.957034 )
+        let marker1 = GMSMarker(position: position1)
+        marker1.title = "중앙대 분실센터"
+        marker1.snippet = "010-2114-1158"
+        marker1.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+        marker1.map = mapView
         
         let position2 = CLLocationCoordinate2D(latitude: 37.51, longitude: 126.96)
         let marker2 = GMSMarker(position: position2)
         marker2.title = "중앙대친구"
+        marker2.snippet = "010-2114-1159"
+        marker2.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
         marker2.map = mapView
     }
     
+    func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String,
+                 name: String, location: CLLocationCoordinate2D) {
+        print("You tapped \(name): \(placeID), \(location.latitude)/\(location.longitude)")
+    }
     
     // Populate the array with the list of likely places.
     func listLikelyPlaces() {
