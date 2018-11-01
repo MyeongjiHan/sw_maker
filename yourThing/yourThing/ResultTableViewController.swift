@@ -18,7 +18,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     
     func requestInfo() {
         
-        let url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundDetailInfo?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&ATC_ID=F2013072500001159&FD_SN=1"
+        let url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundInfoAccToClAreaPd?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&startPage=1&numOfRows=100&START_YMD=20170302&END_YMD=20170802"
+        
         
         guard let xmlParser = XMLParser(contentsOf: URL(string: url)!) else {return}
         
@@ -30,11 +31,6 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
         requestInfo()
     }
     

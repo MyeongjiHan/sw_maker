@@ -106,10 +106,28 @@
                                     <segue destination="Ske-as-zTz" kind="show" id="7z2-Tn-tTq"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="분실장소" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ugc-tE-xUn">
+                                <rect key="frame" x="50" y="190" width="295" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="분실물 분류" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="BSk-qG-wr7">
+                                <rect key="frame" x="50" y="264" width="295" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="mGo-wO-q7m"/>
                     </view>
+                    <connections>
+                        <outlet property="lostCategory" destination="BSk-qG-wr7" id="L1l-cU-WZw"/>
+                        <outlet property="lostPlace" destination="Ugc-tE-xUn" id="7EH-0e-dNP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qfw-Ep-DvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -154,7 +172,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bp7-fL-j22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4236" y="133.5832083958021"/>
+            <point key="canvasLocation" x="3766" y="78"/>
         </scene>
         <!--Item-->
         <scene sceneID="Ycg-v9-QaO">
