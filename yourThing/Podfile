@@ -9,6 +9,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 target 'yourThing' do
 
 pod 'GoogleMaps'
+pod 'GooglePlacePicker'
 pod 'GooglePlaces'
 
 end
