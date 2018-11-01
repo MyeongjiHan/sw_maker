@@ -39,6 +39,21 @@
             </objects>
             <point key="canvasLocation" x="1025" y="-654"/>
         </scene>
+        <!--Transportation View Controller-->
+        <scene sceneID="2Rk-3f-FAy">
+            <objects>
+                <viewController id="Hva-mC-sMM" customClass="TransportationViewController" customModule="yourThing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FdL-Ob-HYp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="eLP-gN-ZtH"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kwj-vF-Ys7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2052" y="-318"/>
+        </scene>
         <!--Item-->
         <scene sceneID="Bav-N4-FZt">
             <objects>
@@ -47,25 +62,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGn-sT-ZuM">
-                                <rect key="frame" x="16" y="52" width="343" height="532"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPQ-iw-TOJ">
+                                <rect key="frame" x="109" y="127" width="156" height="82"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="대중교통"/>
+                                <connections>
+                                    <segue destination="Hva-mC-sMM" kind="show" id="Uqz-4P-g3L"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-77-4Mg">
+                                <rect key="frame" x="118" y="261" width="138" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="포털기관"/>
+                                <connections>
+                                    <segue destination="Vhr-UV-s6j" kind="show" id="ODl-VE-iZ9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="P41-VG-ezo"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" id="G7u-Fn-hHq"/>
-                    <connections>
-                        <outlet property="nameLabel" destination="sGn-sT-ZuM" id="fHE-Zk-SEr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etP-zj-AFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1876" y="134"/>
+            <point key="canvasLocation" x="1024.8" y="133.5832083958021"/>
+        </scene>
+        <!--Portal View Controller-->
+        <scene sceneID="7FE-qa-uuU">
+            <objects>
+                <viewController id="Vhr-UV-s6j" customClass="PortalViewController" customModule="yourThing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="x9T-qf-tb1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="mGo-wO-q7m"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qfw-Ep-DvB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2052" y="509"/>
         </scene>
         <!--Item-->
         <scene sceneID="rGH-w3-qAg">
@@ -106,7 +144,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bp7-fL-j22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025" y="134"/>
+            <point key="canvasLocation" x="3297" y="134"/>
         </scene>
         <!--Item-->
         <scene sceneID="Ycg-v9-QaO">
@@ -149,8 +187,8 @@
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="jAq-VC-YS1"/>
-                        <segue destination="Ske-as-zTz" kind="relationship" relationship="viewControllers" id="COs-bN-5K7"/>
-                        <segue destination="BAe-vy-Nuh" kind="relationship" relationship="viewControllers" id="V8Q-JD-t7U"/>
+                        <segue destination="WQw-py-JLH" kind="relationship" relationship="viewControllers" id="ZHX-CA-ONz"/>
+                        <segue destination="BAe-vy-Nuh" kind="relationship" relationship="viewControllers" id="zpj-Vy-e0L"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bLE-A7-ZpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
