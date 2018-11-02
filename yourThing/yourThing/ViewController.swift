@@ -25,6 +25,8 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
     
+   
+    
     // An array to hold the list of likely places.
     var likelyPlaces: [GMSPlace] = []
     
@@ -38,25 +40,33 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     var searchController: UISearchController?
     var resultView: UITextView?
     
-    // Update the map once the user has made their selection.
-    @IBAction func unwindToMain(segue: UIStoryboardSegue) {
-        // Clear the map.
-        mapView.clear()
-        
-        // Add a marker to the map.
-        if selectedPlace != nil {
-            let marker = GMSMarker(position: (self.selectedPlace?.coordinate)!)
-            marker.title = selectedPlace?.name
-            marker.snippet = selectedPlace?.formattedAddress
-            marker.map = mapView
-        }
-        
-        listLikelyPlaces()
-    }
+    
+  
+ 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mapView?.delegate = self
+        
+        resultsViewController = GMSAutocompleteResultsViewController()
+        resultsViewController?.delegate = self
+
+        searchController = UISearchController(searchResultsController: resultsViewController)
+        searchController?.searchResultsUpdater = resultsViewController
+        
+        // Put the search bar in the navigation bar.
+        searchController?.searchBar.sizeToFit()
+        navigationItem.titleView = searchController?.searchBar
+        
+        // When UISearchController presents the results view, present it in
+        // this view controller, not one further up the chain.
+        definesPresentationContext = true
+        
+        // Prevent the navigation bar from being hidden when searching.
+        searchController?.hidesNavigationBarDuringPresentation = false
+        
+    
         // Initialize the location manager.
         locationManager = CLLocationManager()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -82,12 +92,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         
         listLikelyPlaces()
         
-        resultsViewController = GMSAutocompleteResultsViewController()
-        resultsViewController?.delegate = self
-        
-        searchController = UISearchController(searchResultsController: resultsViewController)
-        searchController?.searchResultsUpdater = resultsViewController
-        
+       
         let subView = UIView(frame: CGRect(x: 0, y: 65.0, width: 350.0, height: 45.0))
         
         subView.addSubview((searchController?.searchBar)!)
@@ -106,17 +111,57 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         marker1.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
         marker1.map = mapView
         
-        let position2 = CLLocationCoordinate2D(latitude: 37.51, longitude: 126.96)
+        let position2 = CLLocationCoordinate2D(latitude: 37.4955, longitude: 126.9585)
         let marker2 = GMSMarker(position: position2)
-        marker2.title = "중앙대친구"
-        marker2.snippet = "010-2114-1159"
+        marker2.title = "숭실대 분실센터"
+        marker2.snippet = "02-820-0114"
         marker2.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
         marker2.map = mapView
+        
+        let position3 = CLLocationCoordinate2D(latitude: 37.5126, longitude: 126.9536)
+        let marker3 = GMSMarker(position: position3)
+        marker3.title = "노들지구대"
+        marker3.snippet = "02-815-2470"
+        marker3.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+        marker3.map = mapView
+        
+        let position4 = CLLocationCoordinate2D(latitude: 37.5109, longitude: 126.9617)
+        let marker4 = GMSMarker(position: position4)
+        marker4.title = "흑석1치안센터"
+        marker4.snippet = "02-815-9315"
+        marker4.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+        marker4.map = mapView
+        
+        
+        let position5 = CLLocationCoordinate2D(latitude: 37.5031, longitude: 126.9478)
+        let marker5 = GMSMarker(position: position5)
+        marker5.title = "동작 경찰서"
+        marker5.snippet = "112"
+        marker5.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+        marker5.map = mapView
+        
+        let position6 = CLLocationCoordinate2D(latitude: 37.5031, longitude: 126.9791)
+        let marker6 = GMSMarker(position: position6)
+        marker6.title = "동작역"
+        marker6.snippet = "02-6110-4311"
+        marker6.infoWindowAnchor = CGPoint(x: 0.5, y: 0.5)
+        marker6.map = mapView
     }
     
-    func mapView(_ mapView: GMSMapView, didTapPOIWithPlaceID placeID: String,
-                 name: String, location: CLLocationCoordinate2D) {
-        print("You tapped \(name): \(placeID), \(location.latitude)/\(location.longitude)")
+    func placeAutocomplete() {
+        let filter = GMSAutocompleteFilter()
+        filter.type = .establishment
+        placesClient.autocompleteQuery("Sydney Oper", bounds: nil, filter: filter, callback: {(results, error) -> Void in
+            if let error = error {
+                print("Autocomplete error \(error)")
+                return
+            }
+            if let results = results {
+                for result in results {
+                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
+                }
+            }
+        })
     }
     
     // Populate the array with the list of likely places.
@@ -197,8 +242,9 @@ extension ViewController: CLLocationManagerDelegate {
     }
     
 }
+
 extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
-    
+
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didAutocompleteWith place: GMSPlace) {
         searchController?.isActive = false
@@ -207,37 +253,61 @@ extension ViewController: GMSAutocompleteResultsViewControllerDelegate {
         print("Place address: \(place.formattedAddress)")
         print("Place attributions: \(place.attributions)")
     }
-    
+
     func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
                            didFailAutocompleteWithError error: Error){
         // TODO: handle the error.
         print("Error: ", error.localizedDescription)
     }
-    
+
     // Turn the network activity indicator on and off again.
     func didRequestAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
-    
+
     func didUpdateAutocompletePredictions(forResultsController resultsController: GMSAutocompleteResultsViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
     }
-    func placeAutocomplete() {
-        
-        let filter = GMSAutocompleteFilter()
-        filter.type = .establishment
-        placesClient.autocompleteQuery("Sydney Oper", bounds: nil, filter: filter, callback: {(results, error) -> Void in
-            
-            if let error = error {
-                print("Autocomplete error \(error)")
-                return
-            }
-            if let results = results {
-                for result in results {
-                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
-                }
-            }
-        })
-    }
-    
+//    func placeAutocomplete() {
+//
+//        let filter = GMSAutocompleteFilter()
+//        filter.type = .establishment
+//        placesClient.autocompleteQuery("Sydney Oper", bounds: nil, filter: filter, callback: {(results, error) -> Void in
+//
+//            if let error = error {
+//                print("Autocomplete error \(error)")
+//                return
+//            }
+//            if let results = results {
+//                for result in results {
+//                    print("Result \(result.attributedFullText) with placeID \(result.placeID)")
+//                }
+//            }
+//        })
+//    }
+//    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+//                           didAutocompleteWith place: GMSPlace) {
+//        searchController?.isActive = false
+//        // Do something with the selected place.
+//        print("Place name: \(place.name)")
+//        print("Place address: \(place.formattedAddress)")
+//        print("Place attributions: \(place.attributions)")
+//    }
+//
+//    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+//                           didFailAutocompleteWithError error: Error){
+//        // TODO: handle the error.
+//        print("Error: ", error.localizedDescription)
+//    }
+//
+//    // Turn the network activity indicator on and off again.
+//    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+//    }
+//
+//    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+//        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+//    }
+//
+//
 }
