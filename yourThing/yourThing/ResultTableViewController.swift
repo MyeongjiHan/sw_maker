@@ -11,15 +11,23 @@ import UIKit
 class ResultTableViewController: UITableViewController, XMLParserDelegate {
 
     var xmlParser = XMLParser()
+    var xmlParser2 = XMLParser()
     var currentElement = ""
     
     var lostNames = [String]() //물품명
     var acquisitionDates = [String]() //습득일자
     var placeAddrs = [String]() //보관장소
+    var lostIDs = [LostID]() //분실물 ID
+    var atcIds = [String]() //관리 ID
+    var fdSns = [String]() //습득순번
+    var lostImages = [String]() //분실물 이미지
     
     var placeAddr = ""
     var lostName = ""
     var acquisitionDate = ""
+    var atcId = ""
+    var fdSn = ""
+    var lostImage = ""
     
     var resultPlaces = ""
     
@@ -40,9 +48,32 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         guard let xmlParser = XMLParser(contentsOf: URL(string: url)!) else {return}
         
         xmlParser.delegate = self
-        xmlParser.parse()
+        xmlParser.parse();
+
         
+        
+        print("atcIds.count = \(atcIds.count)")
+        
+//        for i in 1...atcIds.count {
+//            let tempLostId = LostID(atcId: atcIds[i-1], fdSn: fdSns[i-1])
+//            lostIDs.append(tempLostId)
+//            requestInfo2(lostID: tempLostId)
+//        }
     }
+    
+//    func requestInfo2(lostID:LostID) {
+//        let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundDetailInfo?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&ATC_ID="
+//        let temp_url2 = "&FD_SN="
+//
+//        let url = "\(temp_url)\(lostID.atcId)\(temp_url2)\(lostID.fdSn)"
+//
+//        guard let xmlParser2 = XMLParser(contentsOf: URL(string: url)!) else {return}
+//
+//        xmlParser2.delegate = self
+//        xmlParser2.parse()
+//
+//    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,45 +81,123 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         lostNames = []
         acquisitionDates = []
         placeAddrs = []
-
+        lostImages = []
+        atcIds = []
+        fdSns = []
+        lostIDs = []
         
         requestInfo()
+        
+        
+    
+        
         self.tableView.rowHeight = 140
     }
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElement = elementName
+        
+//        if (parser == xmlParser) {
+//            print("parser = xmlParser")
+//            if(elementName == "depPlace") {
+//                placeAddr = ""
+//            } else if (elementName == "fdPrdtNm") {
+//                lostName = ""
+//            } else if (elementName == "fdYmd") {
+//                acquisitionDate = ""
+//            } else if (elementName == "atcId") {
+//                atcId = ""
+//            } else if (elementName == "fdSn") {
+//                fdSn = ""
+//            }
+//        } else if (parser == xmlParser2) {
+//            if (elementName == "fdFilePathImg") {
+//                lostImage = ""
+//            }
+//        }
+        
         if(elementName == "depPlace") {
             placeAddr = ""
         } else if (elementName == "fdPrdtNm") {
             lostName = ""
         } else if (elementName == "fdYmd") {
             acquisitionDate = ""
+        } else if (elementName == "atcId") {
+            atcId = ""
+        } else if (elementName == "fdSn") {
+            fdSn = ""
         }
     }
     
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+//        if (parser == xmlParser) {
+//            if(elementName == "depPlace") {
+//                placeAddrs.append(placeAddr)
+//            } else if (elementName == "fdPrdtNm") {
+//                lostNames.append(lostName)
+//            } else if (elementName == "fdYmd") {
+//                acquisitionDates.append(acquisitionDate)
+//            } else if (elementName == "atcId") {
+//                atcIds.append(atcId)
+//            } else if (elementName == "fdSn") {
+//                fdSns.append(fdSn)
+//            }
+//        } else if (parser == xmlParser2) {
+//            if (elementName == "fdFilePathImg") {
+//                lostImages.append(lostImage)
+//            }
+//        }
+        
         if(elementName == "depPlace") {
             placeAddrs.append(placeAddr)
         } else if (elementName == "fdPrdtNm") {
             lostNames.append(lostName)
         } else if (elementName == "fdYmd") {
             acquisitionDates.append(acquisitionDate)
+        } else if (elementName == "atcId") {
+            atcIds.append(atcId)
+        } else if (elementName == "fdSn") {
+            fdSns.append(fdSn)
         }
+
     }
     
     public func parser(_ parser: XMLParser, foundCharacters string: String) {
+//        if (parser == xmlParser) {
+//            if(currentElement == "depPlace") {
+//                placeAddr = string
+//            } else if (currentElement == "fdPrdtNm") {
+//                lostName = string
+//            } else if (currentElement == "fdYmd") {
+//                acquisitionDate = string
+//            } else if (currentElement == "atcId") {
+//                atcId = string
+//            } else if (currentElement == "fdSn") {
+//                fdSn = string
+//            }
+//        } else if (parser == xmlParser2) {
+//            if (currentElement == "fdFilePathImg") {
+//                lostImage = string
+//            }
+//        }
+        
         if(currentElement == "depPlace") {
             placeAddr = string
         } else if (currentElement == "fdPrdtNm") {
             lostName = string
         } else if (currentElement == "fdYmd") {
             acquisitionDate = string
+        } else if (currentElement == "atcId") {
+            atcId = string
+        } else if (currentElement == "fdSn") {
+            fdSn = string
         }
+
         
         //print("\(string)")
     }
 
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -109,46 +218,14 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         cell.place.text = "보관장소: " + placeAddrs[indexPath.row]
         cell.lostName.text = "물품명: " + lostNames[indexPath.row]
         cell.acquisitionDate.text = "습득일자: " + acquisitionDates[indexPath.row]
+        
+//        var imageUrl = NSURL(string: lostImages[indexPath.row])
+//        var data = NSData(contentsOf: imageUrl as! URL)
+//        cell.lostImage.image = UIImage(data: data as! Data)
 
         return cell
     }
-
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     /*
     // MARK: - Navigation
 
@@ -179,4 +256,9 @@ class ResultTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+}
+
+struct LostID {
+    var atcId:String //관리 ID
+    var fdSn:String //습득순번
 }
