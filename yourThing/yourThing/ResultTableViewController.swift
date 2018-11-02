@@ -47,6 +47,11 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        lostNames = []
+        acquisitionDates = []
+        placeAddrs = []
+
+        
         requestInfo()
         self.tableView.rowHeight = 140
     }
