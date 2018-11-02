@@ -24,6 +24,7 @@
 		AC07BC3D218CABAB00AFD0F7 /* info2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC07BC3C218CABAB00AFD0F7 /* info2ViewController.swift */; };
 		AC07BC3F218CABB400AFD0F7 /* info3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC07BC3E218CABB400AFD0F7 /* info3ViewController.swift */; };
 		AC07BC41218CABC000AFD0F7 /* info4ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC07BC40218CABC000AFD0F7 /* info4ViewController.swift */; };
+		AC07BC43218CB8A700AFD0F7 /* ResultDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC07BC42218CB8A700AFD0F7 /* ResultDetailViewController.swift */; };
 		F800B5E4F1FCB34070B42B08 /* Pods_yourThing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		AC07BC3C218CABAB00AFD0F7 /* info2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = info2ViewController.swift; sourceTree = "<group>"; };
 		AC07BC3E218CABB400AFD0F7 /* info3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = info3ViewController.swift; sourceTree = "<group>"; };
 		AC07BC40218CABC000AFD0F7 /* info4ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = info4ViewController.swift; sourceTree = "<group>"; };
+		AC07BC42218CB8A700AFD0F7 /* ResultDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultDetailViewController.swift; sourceTree = "<group>"; };
 		BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yourThing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDDED8A3919C5B505AE4D31E /* Pods-yourThing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourThing.release.xcconfig"; path = "Pods/Target Support Files/Pods-yourThing/Pods-yourThing.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -142,6 +144,7 @@
 				AC07BC3C218CABAB00AFD0F7 /* info2ViewController.swift */,
 				AC07BC3E218CABB400AFD0F7 /* info3ViewController.swift */,
 				AC07BC40218CABC000AFD0F7 /* info4ViewController.swift */,
+				AC07BC42218CB8A700AFD0F7 /* ResultDetailViewController.swift */,
 			);
 			path = yourThing;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC07BC43218CB8A700AFD0F7 /* ResultDetailViewController.swift in Sources */,
 				AC07BC3B218CAB9D00AFD0F7 /* info1ViewController.swift in Sources */,
 				52C07645218B19BD00E2BA99 /* TransportationViewController.swift in Sources */,
 				AC07BC3F218CABB400AFD0F7 /* info3ViewController.swift in Sources */,
