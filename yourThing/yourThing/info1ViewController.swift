@@ -12,6 +12,7 @@ class info1ViewController: UIViewController {
     
     @IBOutlet weak var title1: UILabel!
     @IBOutlet weak var content1: UILabel!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title1.text = "신용카드 분실 대처요령"
