@@ -12,16 +12,21 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
 
     var xmlParser = XMLParser()
     var currentElement = ""
-    var placeAddrs = [String]()
+    
+    var lostNames = [String]() //물품명
+    var acquisitionDates = [String]() //습득일자
+    var placeAddrs = [String]() //보관장소
+    
     var placeAddr = ""
+    var lostName = ""
+    var acquisitionDate = ""
+    
     var resultPlaces = ""
     
     var userLostPlace = ""
     var userLostCategory = ""
     
     func requestInfo() {
-        
-//        http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundInfoAccTpNmCstdyPlace?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&pageNo=1&startPage=1&numOfRows=10&pageSize=10&PRDT_NM=%EC%A7%80%EA%B0%91&DEP_PLACE=%EC%B6%A9%EB%AC%B4%EB%A1%9C  &PRDT_NM=지갑
         
         let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundInfoAccTpNmCstdyPlace?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&pageNo=1&startPage=1&numOfRows=50&pageSize=10&PRDT_NM="
         let temp_url2 = "&DEP_PLACE="
@@ -43,25 +48,40 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         super.viewDidLoad()
 
         requestInfo()
+        self.tableView.rowHeight = 140
     }
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElement = elementName
         if(elementName == "depPlace") {
             placeAddr = ""
+        } else if (elementName == "fdPrdtNm") {
+            lostName = ""
+        } else if (elementName == "fdYmd") {
+            acquisitionDate = ""
         }
     }
     
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         if(elementName == "depPlace") {
             placeAddrs.append(placeAddr)
+        } else if (elementName == "fdPrdtNm") {
+            lostNames.append(lostName)
+        } else if (elementName == "fdYmd") {
+            acquisitionDates.append(acquisitionDate)
         }
     }
     
     public func parser(_ parser: XMLParser, foundCharacters string: String) {
-        placeAddr = string
+        if(currentElement == "depPlace") {
+            placeAddr = string
+        } else if (currentElement == "fdPrdtNm") {
+            lostName = string
+        } else if (currentElement == "fdYmd") {
+            acquisitionDate = string
+        }
         
-        print("\(string)")
+        //print("\(string)")
     }
 
     // MARK: - Table view data source
@@ -81,12 +101,14 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! ResultTableViewCell
 
         // Configure the cell...
-        cell.lostName.text = placeAddrs[indexPath.row]
+        cell.place.text = "보관장소: " + placeAddrs[indexPath.row]
+        cell.lostName.text = "물품명: " + lostNames[indexPath.row]
+        cell.acquisitionDate.text = "습득일자: " + acquisitionDates[indexPath.row]
 
         return cell
     }
 
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -136,7 +158,10 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
 
 class ResultTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var lostImage: UIImageView!
     @IBOutlet weak var lostName: UILabel!
+    @IBOutlet weak var acquisitionDate: UILabel!
+    @IBOutlet weak var place: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
