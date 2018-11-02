@@ -16,6 +16,9 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     var placeAddr = ""
     var resultPlaces = ""
     
+    var userLostPlace = ""
+    var userLostCategory = ""
+    
     func requestInfo() {
         
         let url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundInfoAccToClAreaPd?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&startPage=1&numOfRows=100&START_YMD=20170302&END_YMD=20170802"
