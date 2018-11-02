@@ -40,7 +40,7 @@
             </objects>
             <point key="canvasLocation" x="1025" y="-654"/>
         </scene>
-        <!--Transportation View Controller-->
+        <!--대중교통-->
         <scene sceneID="2Rk-3f-FAy">
             <objects>
                 <viewController id="Hva-mC-sMM" customClass="TransportationViewController" customModule="yourThing" customModuleProvider="target" sceneMemberID="viewController">
@@ -50,6 +50,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="eLP-gN-ZtH"/>
                     </view>
+                    <navigationItem key="navigationItem" title="대중교통" id="axI-WO-Qn5"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kwj-vF-Ys7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -64,8 +65,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPQ-iw-TOJ">
-                                <rect key="frame" x="109" y="127" width="156" height="82"/>
+                                <rect key="frame" x="55" y="198" width="110" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="대중교통"/>
                                 <connections>
@@ -73,25 +75,51 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-77-4Mg">
-                                <rect key="frame" x="118" y="261" width="138" height="83"/>
+                                <rect key="frame" x="215" y="198" width="110" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="포털기관"/>
                                 <connections>
                                     <segue destination="Vhr-UV-s6j" kind="show" id="ODl-VE-iZ9"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGP-sn-WxC">
+                                <rect key="frame" x="55" y="386" width="110" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls1-f7-7dn">
+                                <rect key="frame" x="215" y="386" width="110" height="90"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="분실장소를 선택해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVi-XI-u6t">
+                                <rect key="frame" x="26" y="110" width="276" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="P41-VG-ezo"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fo6-mG-h0v"/>
+                    <connections>
+                        <outlet property="portalLabel" destination="ls1-f7-7dn" id="xyn-mI-Gg6"/>
+                        <outlet property="transLabel" destination="SGP-sn-WxC" id="N70-yR-Tdd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etP-zj-AFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1964" y="133.5832083958021"/>
         </scene>
-        <!--Portal View Controller-->
+        <!--포털기관-->
         <scene sceneID="7FE-qa-uuU">
             <objects>
                 <viewController id="Vhr-UV-s6j" customClass="PortalViewController" customModule="yourThing" customModuleProvider="target" sceneMemberID="viewController">
@@ -99,14 +127,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="duQ-O8-TPQ">
-                                <rect key="frame" x="164" y="110" width="46" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="Ske-as-zTz" kind="show" id="7z2-Tn-tTq"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="분실장소" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ugc-tE-xUn">
                                 <rect key="frame" x="50" y="190" width="295" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -125,6 +145,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="mGo-wO-q7m"/>
                     </view>
+                    <navigationItem key="navigationItem" title="포털기관" id="CPa-ri-92n">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="Azk-T0-lNq">
+                            <connections>
+                                <segue destination="Ske-as-zTz" kind="show" id="xIR-BO-Fum"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="lostCategory" destination="BSk-qG-wr7" id="L1l-cU-WZw"/>
                         <outlet property="lostPlace" destination="Ugc-tE-xUn" id="7EH-0e-dNP"/>
