@@ -293,6 +293,7 @@
                                     <outlet property="lostImage" destination="3NS-9a-blb" id="plF-WP-LQ9"/>
                                     <outlet property="lostName" destination="4fL-DN-ZpH" id="WE4-Qn-Qeg"/>
                                     <outlet property="place" destination="lgA-eG-Y4r" id="miM-xs-Qrl"/>
+                                    <segue destination="7me-e3-jOW" kind="show" id="ZcE-Jw-Uh4"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -306,6 +307,62 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bp7-fL-j22" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3765.5999999999999" y="77.811094452773617"/>
+        </scene>
+        <!--Result Detail View Controller-->
+        <scene sceneID="qkl-5C-BVi">
+            <objects>
+                <viewController id="7me-e3-jOW" customClass="ResultDetailViewController" customModule="yourThing" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QCm-aF-HaK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gDr-4v-NXx">
+                                <rect key="frame" x="67" y="78" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZ2-vb-VqS">
+                                <rect key="frame" x="67" y="364" width="240" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQi-6D-Bnf">
+                                <rect key="frame" x="67" y="404" width="240" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lue-Qp-imB">
+                                <rect key="frame" x="67" y="444" width="240" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMz-GC-E8S">
+                                <rect key="frame" x="67" y="484" width="240" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="HFp-Iz-LDy"/>
+                    </view>
+                    <connections>
+                        <outlet property="date" destination="LQi-6D-Bnf" id="0CY-lV-oqg"/>
+                        <outlet property="image" destination="gDr-4v-NXx" id="7mT-7o-Nu5"/>
+                        <outlet property="lostName" destination="dZ2-vb-VqS" id="Ir6-Gx-gli"/>
+                        <outlet property="place" destination="lue-Qp-imB" id="pYd-Pa-J36"/>
+                        <outlet property="tel" destination="LMz-GC-E8S" id="1XX-ba-Tzn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="REB-WZ-SQ1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4562.3999999999996" y="77.811094452773617"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Wcc-uD-MzT">

@@ -36,16 +36,21 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     
     func requestInfo() {
         
-        let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundInfoAccTpNmCstdyPlace?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&pageNo=1&startPage=1&numOfRows=50&pageSize=10&PRDT_NM="
-        let temp_url2 = "&DEP_PLACE="
+//        let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundInfoAccTpNmCstdyPlace?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&pageNo=1&startPage=1&numOfRows=50&pageSize=10&PRDT_NM="
+//        let temp_url2 = "&DEP_PLACE="
+//
+//
+//
+//
+//        let encodedLostCategory = userLostCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//        let encodedLostPlace = userLostPlace.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+//
+//        let url = "\(temp_url)\(encodedLostCategory!)\(temp_url2)\(encodedLostPlace!)"
+//
+//
+//        guard let xmlParser = XMLParser(contentsOf: URL(string: url)!) else {return}
         
-        let encodedLostCategory = userLostCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        let encodedLostPlace = userLostPlace.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-        
-        let url = "\(temp_url)\(encodedLostCategory!)\(temp_url2)\(encodedLostPlace!)"
-        
-        
-        guard let xmlParser = XMLParser(contentsOf: URL(string: url)!) else {return}
+        guard let xmlParser = XMLParser(contentsOf: URL(string: "http://localhost:8080/sample2.xml")!) else {return}
         
         xmlParser.delegate = self
         xmlParser.parse();
@@ -54,25 +59,30 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         
         print("atcIds.count = \(atcIds.count)")
         
-//        for i in 1...atcIds.count {
-//            let tempLostId = LostID(atcId: atcIds[i-1], fdSn: fdSns[i-1])
-//            lostIDs.append(tempLostId)
-//            requestInfo2(lostID: tempLostId)
-//        }
+        for i in 1...atcIds.count {
+            let tempLostId = LostID(atcId: atcIds[i-1], fdSn: fdSns[i-1])
+            lostIDs.append(tempLostId)
+        }
+        
+        for i in 1...atcIds.count {
+            requestInfo2(lostID: lostIDs[i-1])
+        }
     }
     
-//    func requestInfo2(lostID:LostID) {
+    func requestInfo2(lostID:LostID) {
 //        let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundDetailInfo?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&ATC_ID="
 //        let temp_url2 = "&FD_SN="
 //
 //        let url = "\(temp_url)\(lostID.atcId)\(temp_url2)\(lostID.fdSn)"
 //
 //        guard let xmlParser2 = XMLParser(contentsOf: URL(string: url)!) else {return}
-//
-//        xmlParser2.delegate = self
-//        xmlParser2.parse()
-//
-//    }
+        
+        guard let xmlParser2 = XMLParser(contentsOf: URL(string: "http://localhost:8080/sample2.xml")!) else {return}
+
+        xmlParser2.delegate = self
+        xmlParser2.parse()
+
+    }
     
     
     override func viewDidLoad() {
@@ -96,6 +106,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElement = elementName
+        
+        
         
 //        if (parser == xmlParser) {
 //            print("parser = xmlParser")
@@ -126,7 +138,10 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
             atcId = ""
         } else if (elementName == "fdSn") {
             fdSn = ""
+        } else if (elementName == "fdFilePathImg") {
+            lostImage = ""
         }
+
     }
     
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
@@ -158,7 +173,10 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
             atcIds.append(atcId)
         } else if (elementName == "fdSn") {
             fdSns.append(fdSn)
+        } else if (elementName == "fdFilePathImg") {
+            lostImages.append(lostImage)
         }
+
 
     }
     
@@ -191,6 +209,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
             atcId = string
         } else if (currentElement == "fdSn") {
             fdSn = string
+        } else if (currentElement == "fdFilePathImg") {
+            lostImage = string
         }
 
         
@@ -219,9 +239,9 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         cell.lostName.text = "물품명: " + lostNames[indexPath.row]
         cell.acquisitionDate.text = "습득일자: " + acquisitionDates[indexPath.row]
         
-//        var imageUrl = NSURL(string: lostImages[indexPath.row])
-//        var data = NSData(contentsOf: imageUrl as! URL)
-//        cell.lostImage.image = UIImage(data: data as! Data)
+        var imageUrl = NSURL(string: lostImages[indexPath.row])
+        var data = NSData(contentsOf: imageUrl as! URL)
+        cell.lostImage.image = UIImage(data: data as! Data)
 
         return cell
     }
