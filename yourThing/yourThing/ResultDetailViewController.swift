@@ -32,9 +32,10 @@ class ResultDetailViewController: UIViewController {
         var data = NSData(contentsOf: imageUrl as! URL)
         image.image = UIImage(data: data as! Data)
         
-        lostName.text = selectedLostName
+        lostName.text = "\(selectedLostName)"
         
-        date.text = selectedDate
+        date.text = "\(selectedDate)"
+        place.text = "\(selectedPlace)"
     }
     
 

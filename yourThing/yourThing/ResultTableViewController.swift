@@ -102,9 +102,7 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         lostIDs = []
         
         requestInfo()
-        
-        
-    
+
         
         self.tableView.rowHeight = 140
     }
@@ -270,7 +268,7 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         nextView.selectedLostName = lostNames[selectedIndex!]
         nextView.selectedDate = acquisitionDates[selectedIndex!]
         
-        print("\(selectedIndex)")
+        nextView.selectedPlace = placeAddrs[selectedIndex!]
         
     }
  
