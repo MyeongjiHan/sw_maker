@@ -18,14 +18,11 @@ import GoogleMaps
 import GooglePlaces
 
 class ViewController: UIViewController, GMSMapViewDelegate {
-    
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var placesClient: GMSPlacesClient!
     var zoomLevel: Float = 15.0
-    
-   
     
     // An array to hold the list of likely places.
     var likelyPlaces: [GMSPlace] = []
@@ -40,14 +37,8 @@ class ViewController: UIViewController, GMSMapViewDelegate {
     var searchController: UISearchController?
     var resultView: UITextView?
     
-    
-  
- 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mapView?.delegate = self
         
         resultsViewController = GMSAutocompleteResultsViewController()
         resultsViewController?.delegate = self
@@ -85,6 +76,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         mapView.settings.myLocationButton = true
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         mapView.isMyLocationEnabled = true
+        mapView.delegate = self
         
         // Add the map to the view, hide it until we've got a location update.
         view.addSubview(mapView)
@@ -92,8 +84,7 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         
         listLikelyPlaces()
         
-       
-        let subView = UIView(frame: CGRect(x: 0, y: 65.0, width: 350.0, height: 45.0))
+        let subView = UIView(frame: CGRect(x: 0, y: 20.0, width: 350.0, height: 45.0))
         
         subView.addSubview((searchController?.searchBar)!)
         view.addSubview(subView)
@@ -148,6 +139,15 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         marker6.map = mapView
     }
     
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        guard let number = URL(string: "tel://" + marker.snippet!) else { return }
+        UIApplication.shared.open(number)
+    }
+    
+    func mapView(_ mapView: GMSMapView, didTap overlay: GMSOverlay) {
+        print("did touch map marker overlay")
+    }
+    
     func placeAutocomplete() {
         let filter = GMSAutocompleteFilter()
         filter.type = .establishment
@@ -186,6 +186,10 @@ class ViewController: UIViewController, GMSMapViewDelegate {
         })
     }
     
+//    func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
+//        print("did touch map marker")
+//        return false
+//    }
     // Prepare the segue.
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segueToSelect" {
