@@ -15,10 +15,26 @@ class ResultDetailViewController: UIViewController {
     @IBOutlet weak var place: UILabel!
     @IBOutlet weak var tel: UILabel!
     
+    var selectedImage = ""
+    var selectedLostName = ""
+    var selectedDate = ""
+    var selectedPlace = ""
+    var selectedTel = ""
+    
+    var selectedIndex:Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
 
         // Do any additional setup after loading the view.
+        var imageUrl = NSURL(string: selectedImage)
+        var data = NSData(contentsOf: imageUrl as! URL)
+        image.image = UIImage(data: data as! Data)
+        
+        lostName.text = selectedLostName
+        
+        date.text = selectedDate
     }
     
 

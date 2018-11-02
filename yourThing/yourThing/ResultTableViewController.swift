@@ -9,6 +9,8 @@
 import UIKit
 
 class ResultTableViewController: UITableViewController, XMLParserDelegate {
+    
+    
 
     var xmlParser = XMLParser()
     var xmlParser2 = XMLParser()
@@ -33,6 +35,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     
     var userLostPlace = ""
     var userLostCategory = ""
+    
+    var selectedIndex:Int?
     
     func requestInfo() {
         
@@ -88,6 +92,7 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         lostNames = []
         acquisitionDates = []
         placeAddrs = []
@@ -246,15 +251,29 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         return cell
     }
     
-    /*
+    override func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        selectedIndex = indexPath.row
+        
+        return indexPath
+    }
+    
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        let nextView = segue.destination as! ResultDetailViewController
+        
+        nextView.selectedImage = lostImages[selectedIndex!]
+        nextView.selectedLostName = lostNames[selectedIndex!]
+        nextView.selectedDate = acquisitionDates[selectedIndex!]
+        
+        print("\(selectedIndex)")
+        
     }
-    */
+ 
 
 }
 
