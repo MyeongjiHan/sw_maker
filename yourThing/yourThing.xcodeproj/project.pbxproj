@@ -20,7 +20,7 @@
 		52C07645218B19BD00E2BA99 /* TransportationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C07644218B19BD00E2BA99 /* TransportationViewController.swift */; };
 		52C07647218B19E100E2BA99 /* PortalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C07646218B19E100E2BA99 /* PortalViewController.swift */; };
 		A71F588C2189BCF500300C2D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = A71F588B2189BCF500300C2D /* Podfile */; };
-		F800B5E4F1FCB34070B42B08 /* Pods_yourThing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */; };
+		F800B5E4F1FCB34070B42B08 /* Pods_yourThing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +60,7 @@
 		52C07644218B19BD00E2BA99 /* TransportationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransportationViewController.swift; sourceTree = "<group>"; };
 		52C07646218B19E100E2BA99 /* PortalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortalViewController.swift; sourceTree = "<group>"; };
 		A23F9731A7817F9F1B7D10D6 /* Pods-yourThing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourThing.debug.xcconfig"; path = "Pods/Target Support Files/Pods-yourThing/Pods-yourThing.debug.xcconfig"; sourceTree = "<group>"; };
+		A7186DF5218BEABB00E2F30E /* yourThing.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = yourThing.entitlements; sourceTree = "<group>"; };
 		A71F588B2189BCF500300C2D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BF7CF78E96DAE533A6B6F24C /* Pods_yourThing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_yourThing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDDED8A3919C5B505AE4D31E /* Pods-yourThing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-yourThing.release.xcconfig"; path = "Pods/Target Support Files/Pods-yourThing/Pods-yourThing.release.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +118,7 @@
 		524BCC7E2189B53F0089EA1B /* yourThing */ = {
 			isa = PBXGroup;
 			children = (
+				A7186DF5218BEABB00E2F30E /* yourThing.entitlements */,
 				524BCC7F2189B53F0089EA1B /* AppDelegate.swift */,
 				524BCC812189B53F0089EA1B /* ViewController.swift */,
 				524BCCB52189E7280089EA1B /* SecondViewController.swift */,
@@ -237,6 +239,11 @@
 				TargetAttributes = {
 					524BCC7B2189B53F0089EA1B = {
 						CreatedOnToolsVersion = 10.0;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 					524BCC8F2189B5400089EA1B = {
 						CreatedOnToolsVersion = 10.0;
@@ -464,7 +471,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -519,7 +526,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -534,6 +541,7 @@
 			baseConfigurationReference = A23F9731A7817F9F1B7D10D6 /* Pods-yourThing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GSLF88D338;
 				INFOPLIST_FILE = yourThing/Info.plist;
@@ -543,8 +551,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "sw-maker.yourThing2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -553,6 +562,7 @@
 			baseConfigurationReference = DDDED8A3919C5B505AE4D31E /* Pods-yourThing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GSLF88D338;
 				INFOPLIST_FILE = yourThing/Info.plist;
@@ -562,8 +572,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "sw-maker.yourThing2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
