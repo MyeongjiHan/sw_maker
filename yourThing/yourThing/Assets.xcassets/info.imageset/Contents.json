@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "info.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "KakaoTalk_Photo_2018-11-03-11-40-52_6.png",
       "scale" : "2x"
     },
     {
