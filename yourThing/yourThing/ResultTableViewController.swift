@@ -22,7 +22,11 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     var lostIDs = [LostID]() //분실물 ID
     var atcIds = [String]() //관리 ID
     var fdSns = [String]() //습득순번
+    
     var lostImages = [String]() //분실물 이미지
+    //var idImages = [IdImage]() //ID + 이미지
+    var idForImages = [String]()
+    var fdSnsForImage = [String]()
     
     var placeAddr = ""
     var lostName = ""
@@ -37,24 +41,28 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     var userLostCategory = ""
     
     var selectedIndex:Int?
+    var gubun:Int?
+    
     
     func requestInfo() {
         
-//        let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundInfoAccTpNmCstdyPlace?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&pageNo=1&startPage=1&numOfRows=50&pageSize=10&PRDT_NM="
-//        let temp_url2 = "&DEP_PLACE="
-//
-//
-//
-//
-//        let encodedLostCategory = userLostCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//        let encodedLostPlace = userLostPlace.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
-//
-//        let url = "\(temp_url)\(encodedLostCategory!)\(temp_url2)\(encodedLostPlace!)"
-//
-//
-//        guard let xmlParser = XMLParser(contentsOf: URL(string: url)!) else {return}
+        gubun = 1
         
-        guard let xmlParser = XMLParser(contentsOf: URL(string: "http://localhost:8080/sample2.xml")!) else {return}
+        let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundInfoAccTpNmCstdyPlace?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&pageNo=1&startPage=1&numOfRows=20&pageSize=10&PRDT_NM="
+        let temp_url2 = "&DEP_PLACE="
+
+
+
+
+        let encodedLostCategory = userLostCategory.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let encodedLostPlace = userLostPlace.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+
+        let url = "\(temp_url)\(encodedLostCategory!)\(temp_url2)\(encodedLostPlace!)"
+
+
+        guard let xmlParser = XMLParser(contentsOf: URL(string: url)!) else {return}
+        
+        //guard let xmlParser = XMLParser(contentsOf: URL(string: "http://localhost:8080/sample2.xml")!) else {return}
         
         xmlParser.delegate = self
         xmlParser.parse();
@@ -67,24 +75,30 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
             let tempLostId = LostID(atcId: atcIds[i-1], fdSn: fdSns[i-1])
             lostIDs.append(tempLostId)
         }
-        
+
         for i in 1...atcIds.count {
             requestInfo2(lostID: lostIDs[i-1])
         }
+        
+        print("imageCount = \(lostImages.count)")
     }
     
     func requestInfo2(lostID:LostID) {
-//        let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundDetailInfo?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&ATC_ID="
-//        let temp_url2 = "&FD_SN="
-//
-//        let url = "\(temp_url)\(lostID.atcId)\(temp_url2)\(lostID.fdSn)"
-//
-//        guard let xmlParser2 = XMLParser(contentsOf: URL(string: url)!) else {return}
+        gubun = 2
         
-        guard let xmlParser2 = XMLParser(contentsOf: URL(string: "http://localhost:8080/sample2.xml")!) else {return}
+        let temp_url = "http://apis.data.go.kr/1320000/LosPtfundInfoInqireService/getPtLosfundDetailInfo?serviceKey=XuU01vYHKB%2BUi3h%2FZXvu5%2BI7BJ5fP%2BB%2FLmrFscEhUDLAJfB2hTCKnu73ZJcpS9kDVtqYxxEAhJ6XB79kQKE4Sg%3D%3D&ATC_ID="
+        let temp_url2 = "&FD_SN="
+
+        let url = "\(temp_url)\(lostID.atcId)\(temp_url2)\(lostID.fdSn)"
+
+        guard let xmlParser2 = XMLParser(contentsOf: URL(string: url)!) else {return}
+        
+        //guard let xmlParser2 = XMLParser(contentsOf: URL(string: "http://localhost:8080/sample2.xml")!) else {return}
 
         xmlParser2.delegate = self
         xmlParser2.parse()
+        
+        
 
     }
     
@@ -110,111 +124,124 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     public func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]) {
         currentElement = elementName
         
-        
-        
-//        if (parser == xmlParser) {
-//            print("parser = xmlParser")
-//            if(elementName == "depPlace") {
-//                placeAddr = ""
-//            } else if (elementName == "fdPrdtNm") {
-//                lostName = ""
-//            } else if (elementName == "fdYmd") {
-//                acquisitionDate = ""
-//            } else if (elementName == "atcId") {
-//                atcId = ""
-//            } else if (elementName == "fdSn") {
-//                fdSn = ""
-//            }
-//        } else if (parser == xmlParser2) {
-//            if (elementName == "fdFilePathImg") {
-//                lostImage = ""
-//            }
-//        }
-        
-        if(elementName == "depPlace") {
-            placeAddr = ""
-        } else if (elementName == "fdPrdtNm") {
-            lostName = ""
-        } else if (elementName == "fdYmd") {
-            acquisitionDate = ""
-        } else if (elementName == "atcId") {
-            atcId = ""
-        } else if (elementName == "fdSn") {
-            fdSn = ""
-        } else if (elementName == "fdFilePathImg") {
-            lostImage = ""
+        if (gubun == 1) {
+            if(elementName == "depPlace") {
+                placeAddr = ""
+            } else if (elementName == "fdPrdtNm") {
+                lostName = ""
+            } else if (elementName == "fdYmd") {
+                acquisitionDate = ""
+            } else if (elementName == "atcId") {
+                atcId = ""
+            } else if (elementName == "fdSn") {
+                fdSn = ""
+            }
+        } else if (gubun == 2) {
+            if (elementName == "fdFilePathImg") {
+                lostImage = ""
+            } else if (elementName == "atcId") {
+                atcId = ""
+            } else if (elementName == "fdSn") {
+                fdSn = ""
+            }
         }
+        
+//        if(elementName == "depPlace") {
+//            placeAddr = ""
+//        } else if (elementName == "fdPrdtNm") {
+//            lostName = ""
+//        } else if (elementName == "fdYmd") {
+//            acquisitionDate = ""
+//        } else if (elementName == "atcId") {
+//            atcId = ""
+//        } else if (elementName == "fdSn") {
+//            fdSn = ""
+//        } else if (elementName == "fdFilePathImg") {
+//            lostImage = ""
+//        }
 
     }
     
     public func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-//        if (parser == xmlParser) {
-//            if(elementName == "depPlace") {
-//                placeAddrs.append(placeAddr)
-//            } else if (elementName == "fdPrdtNm") {
-//                lostNames.append(lostName)
-//            } else if (elementName == "fdYmd") {
-//                acquisitionDates.append(acquisitionDate)
-//            } else if (elementName == "atcId") {
-//                atcIds.append(atcId)
-//            } else if (elementName == "fdSn") {
-//                fdSns.append(fdSn)
-//            }
-//        } else if (parser == xmlParser2) {
-//            if (elementName == "fdFilePathImg") {
-//                lostImages.append(lostImage)
-//            }
-//        }
         
-        if(elementName == "depPlace") {
-            placeAddrs.append(placeAddr)
-        } else if (elementName == "fdPrdtNm") {
-            lostNames.append(lostName)
-        } else if (elementName == "fdYmd") {
-            acquisitionDates.append(acquisitionDate)
-        } else if (elementName == "atcId") {
-            atcIds.append(atcId)
-        } else if (elementName == "fdSn") {
-            fdSns.append(fdSn)
-        } else if (elementName == "fdFilePathImg") {
-            lostImages.append(lostImage)
+        if (gubun == 1) {
+            if(elementName == "depPlace") {
+                placeAddrs.append(placeAddr)
+            } else if (elementName == "fdPrdtNm") {
+                lostNames.append(lostName)
+            } else if (elementName == "fdYmd") {
+                acquisitionDates.append(acquisitionDate)
+            } else if (elementName == "atcId") {
+                atcIds.append(atcId)
+            } else if (elementName == "fdSn") {
+                fdSns.append(fdSn)
+            }
+        } else if (gubun == 2) {
+            if (elementName == "fdFilePathImg") {
+                lostImages.append(lostImage)
+            } else if (elementName == "atcId") {
+                idForImages.append(atcId)
+            } else if (elementName == "fdSn") {
+                fdSnsForImage.append(fdSn)
+            }
         }
+        
+        
+        
+//        if(elementName == "depPlace") {
+//            placeAddrs.append(placeAddr)
+//        } else if (elementName == "fdPrdtNm") {
+//            lostNames.append(lostName)
+//        } else if (elementName == "fdYmd") {
+//            acquisitionDates.append(acquisitionDate)
+//        } else if (elementName == "atcId") {
+//            atcIds.append(atcId)
+//        } else if (elementName == "fdSn") {
+//            fdSns.append(fdSn)
+//        } else if (elementName == "fdFilePathImg") {
+//            lostImages.append(lostImage)
+//        }
 
 
     }
     
     public func parser(_ parser: XMLParser, foundCharacters string: String) {
-//        if (parser == xmlParser) {
-//            if(currentElement == "depPlace") {
-//                placeAddr = string
-//            } else if (currentElement == "fdPrdtNm") {
-//                lostName = string
-//            } else if (currentElement == "fdYmd") {
-//                acquisitionDate = string
-//            } else if (currentElement == "atcId") {
-//                atcId = string
-//            } else if (currentElement == "fdSn") {
-//                fdSn = string
-//            }
-//        } else if (parser == xmlParser2) {
-//            if (currentElement == "fdFilePathImg") {
-//                lostImage = string
-//            }
-//        }
         
-        if(currentElement == "depPlace") {
-            placeAddr = string
-        } else if (currentElement == "fdPrdtNm") {
-            lostName = string
-        } else if (currentElement == "fdYmd") {
-            acquisitionDate = string
-        } else if (currentElement == "atcId") {
-            atcId = string
-        } else if (currentElement == "fdSn") {
-            fdSn = string
-        } else if (currentElement == "fdFilePathImg") {
-            lostImage = string
+        if (gubun == 1) {
+            if(currentElement == "depPlace") {
+                placeAddr = string
+            } else if (currentElement == "fdPrdtNm") {
+                lostName = string
+            } else if (currentElement == "fdYmd") {
+                acquisitionDate = string
+            } else if (currentElement == "atcId") {
+                atcId = string
+            } else if (currentElement == "fdSn") {
+                fdSn = string
+            }
+        } else if (gubun == 2) {
+            if (currentElement == "fdFilePathImg") {
+                lostImage = string
+            } else if (currentElement == "atcId") {
+                atcId = string
+            } else if (currentElement == "fdSn") {
+                fdSn = string
+            }
         }
+        
+//        if(currentElement == "depPlace") {
+//            placeAddr = string
+//        } else if (currentElement == "fdPrdtNm") {
+//            lostName = string
+//        } else if (currentElement == "fdYmd") {
+//            acquisitionDate = string
+//        } else if (currentElement == "atcId") {
+//            atcId = string
+//        } else if (currentElement == "fdSn") {
+//            fdSn = string
+//        } else if (currentElement == "fdFilePathImg") {
+//            lostImage = string
+//        }
 
         
         //print("\(string)")
@@ -241,6 +268,15 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         cell.place.text = "보관장소: " + placeAddrs[indexPath.row]
         cell.lostName.text = "물품명: " + lostNames[indexPath.row]
         cell.acquisitionDate.text = "습득일자: " + acquisitionDates[indexPath.row]
+        
+//        for item in idImages {
+//            if ((item.lostId == atcIds[indexPath.row]) && (item.fdSn == fdSns[indexPath.row])){
+//                var imageUrl = NSURL(string: item.imagePath!)
+//                var data = NSData(contentsOf: imageUrl as! URL)
+//
+//                cell.lostImage.image = UIImage(data: data as! Data)
+//            }
+//        }
         
         var imageUrl = NSURL(string: lostImages[indexPath.row])
         var data = NSData(contentsOf: imageUrl as! URL)
@@ -269,6 +305,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         nextView.selectedDate = acquisitionDates[selectedIndex!]
         
         nextView.selectedPlace = placeAddrs[selectedIndex!]
+        
+        print("imageCount = \(lostImages.count)")
         
     }
  
@@ -299,3 +337,9 @@ struct LostID {
     var atcId:String //관리 ID
     var fdSn:String //습득순번
 }
+
+//struct IdImage {
+//    var lostId:String?
+//    var fdSn:String?
+//    var imagePath:String?
+//}
