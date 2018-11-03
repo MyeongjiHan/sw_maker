@@ -139,10 +139,6 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         } else if (gubun == 2) {
             if (elementName == "fdFilePathImg") {
                 lostImage = ""
-            } else if (elementName == "atcId") {
-                atcId = ""
-            } else if (elementName == "fdSn") {
-                fdSn = ""
             }
         }
         
@@ -179,11 +175,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         } else if (gubun == 2) {
             if (elementName == "fdFilePathImg") {
                 lostImages.append(lostImage)
-            } else if (elementName == "atcId") {
-                idForImages.append(atcId)
-            } else if (elementName == "fdSn") {
-                fdSnsForImage.append(fdSn)
             }
+            
         }
         
         
@@ -222,10 +215,6 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         } else if (gubun == 2) {
             if (currentElement == "fdFilePathImg") {
                 lostImage = string
-            } else if (currentElement == "atcId") {
-                atcId = string
-            } else if (currentElement == "fdSn") {
-                fdSn = string
             }
         }
         
