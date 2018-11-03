@@ -10,13 +10,19 @@ import UIKit
 
 class SecondViewController: UIViewController, XMLParserDelegate {
     
-    @IBOutlet weak var transLabel: UILabel!
-    @IBOutlet weak var portalLabel: UILabel!
+    @IBOutlet weak var btn1: UIButton!
+    
+    @IBOutlet weak var btn2: UIButton!
+    
     
     
     override func viewDidLoad() {
-        transLabel.text = "ex) 버스,지하철"
-        portalLabel.text = "ex) 쇼핑몰,공항"
+        btn1.layer.cornerRadius = 50
+        btn1.layer.borderWidth = 5
+        btn2.layer.cornerRadius = 50
+        btn2.layer.borderWidth = 5
+        
+        
     }
     /*
      // MARK: - Navigation

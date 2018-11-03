@@ -34,7 +34,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Ap3-Rn-Ipt"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icon1" id="Ap3-Rn-Ipt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -106,55 +106,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPQ-iw-TOJ">
-                                <rect key="frame" x="55" y="198" width="110" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.99953407049999998" green="0.98835557699999999" blue="0.47265523669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gPQ-iw-TOJ">
+                                <rect key="frame" x="26" y="197" width="150" height="150"/>
+                                <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="6uC-if-YTM"/>
+                                    <constraint firstAttribute="width" constant="150" id="X2t-SA-7Hl"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="대중교통"/>
                                 <connections>
                                     <segue destination="Hva-mC-sMM" kind="show" id="Uqz-4P-g3L"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-77-4Mg">
-                                <rect key="frame" x="215" y="198" width="110" height="160"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.45009386540000001" green="0.98132258650000004" blue="0.4743030667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm7-77-4Mg">
+                                <rect key="frame" x="199" y="197" width="150" height="150"/>
+                                <color key="backgroundColor" red="0.50589575637154072" green="0.90046002538071068" blue="0.38493352587659907" alpha="0.7052386558219178" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="PGQ-La-kjl"/>
+                                    <constraint firstAttribute="height" constant="150" id="zbZ-LO-Py6"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="포털기관"/>
                                 <connections>
                                     <segue destination="Vhr-UV-s6j" kind="show" id="ODl-VE-iZ9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGP-sn-WxC">
-                                <rect key="frame" x="55" y="386" width="110" height="90"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ex)쇼핑몰,공항,놀이공원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls1-f7-7dn">
+                                <rect key="frame" x="197" y="361" width="182" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ls1-f7-7dn">
-                                <rect key="frame" x="215" y="386" width="110" height="90"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="분실장소를 선택해주세요!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVi-XI-u6t">
+                                <rect key="frame" x="50" y="112" width="275" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="분실장소를 선택해주세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IVi-XI-u6t">
-                                <rect key="frame" x="26" y="110" width="276" height="31"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ex)버스,지하철,택시" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGP-sn-WxC">
+                                <rect key="frame" x="26" y="361" width="163" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="gPQ-iw-TOJ" firstAttribute="leading" secondItem="P41-VG-ezo" secondAttribute="leading" constant="26" id="1UC-4n-N5w"/>
+                            <constraint firstItem="gPQ-iw-TOJ" firstAttribute="top" secondItem="IVi-XI-u6t" secondAttribute="bottom" constant="64.5" id="7aJ-bd-V1n"/>
+                            <constraint firstItem="P41-VG-ezo" firstAttribute="trailing" secondItem="IVi-XI-u6t" secondAttribute="trailing" constant="50" id="JPH-Jm-2yX"/>
+                            <constraint firstItem="Dm7-77-4Mg" firstAttribute="top" secondItem="IVi-XI-u6t" secondAttribute="bottom" constant="64.5" id="M2H-WM-X4m"/>
+                            <constraint firstItem="IVi-XI-u6t" firstAttribute="top" secondItem="P41-VG-ezo" secondAttribute="top" constant="48" id="MIs-6X-zwm"/>
+                            <constraint firstItem="P41-VG-ezo" firstAttribute="trailing" secondItem="Dm7-77-4Mg" secondAttribute="trailing" constant="26" id="jgX-Kr-Fjz"/>
+                            <constraint firstItem="IVi-XI-u6t" firstAttribute="leading" secondItem="P41-VG-ezo" secondAttribute="leading" constant="50" id="mlb-gw-118"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="P41-VG-ezo"/>
                     </view>
                     <navigationItem key="navigationItem" id="Fo6-mG-h0v"/>
                     <connections>
-                        <outlet property="portalLabel" destination="ls1-f7-7dn" id="xyn-mI-Gg6"/>
-                        <outlet property="transLabel" destination="SGP-sn-WxC" id="N70-yR-Tdd"/>
+                        <outlet property="btn1" destination="gPQ-iw-TOJ" id="1KW-UY-eD1"/>
+                        <outlet property="btn2" destination="Dm7-77-4Mg" id="I3J-4k-7pJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="etP-zj-AFN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -625,7 +639,7 @@
         <scene sceneID="dWY-ag-TNU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ugB-s6-G08" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="G7u-Fn-hHq"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="search" id="G7u-Fn-hHq"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KBd-hd-UpF">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -709,7 +723,7 @@
         <scene sceneID="jaQ-hq-s4E">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Z74-x5-BfM" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="amB-pp-fbD"/>
+                    <tabBarItem key="tabBarItem" title="Item" image="icon3" id="amB-pp-fbD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pfG-3W-TSc">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -725,4 +739,9 @@
             <point key="canvasLocation" x="134" y="2066"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon1" width="37.5" height="37.5"/>
+        <image name="icon3" width="22.5" height="22.5"/>
+        <image name="search" width="32" height="32"/>
+    </resources>
 </document>
