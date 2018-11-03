@@ -36,7 +36,8 @@ class ResultDetailViewController: UIViewController {
         
         date.text = "\(selectedDate)"
         place.text = "\(selectedPlace)"
-        tel.text = "02-6110-3344"
+        //tel.text = "02-6110-3344"
+        tel.text = "\(selectedTel)"
     }
     
 

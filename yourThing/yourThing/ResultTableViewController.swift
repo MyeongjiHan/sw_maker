@@ -22,6 +22,7 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     var lostIDs = [LostID]() //분실물 ID
     var atcIds = [String]() //관리 ID
     var fdSns = [String]() //습득순번
+    var tels = [String]()
     
     var lostImages = [String]() //분실물 이미지
     //var idImages = [IdImage]() //ID + 이미지
@@ -34,6 +35,7 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
     var atcId = ""
     var fdSn = ""
     var lostImage = ""
+    var tel = ""
     
     var resultPlaces = ""
     
@@ -139,6 +141,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         } else if (gubun == 2) {
             if (elementName == "fdFilePathImg") {
                 lostImage = ""
+            } else if (elementName == "tel") {
+                tel = ""
             }
         }
         
@@ -175,6 +179,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         } else if (gubun == 2) {
             if (elementName == "fdFilePathImg") {
                 lostImages.append(lostImage)
+            } else if (elementName == "tel") {
+                tels.append(tel)
             }
             
         }
@@ -215,6 +221,8 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         } else if (gubun == 2) {
             if (currentElement == "fdFilePathImg") {
                 lostImage = string
+            } else if (currentElement == "tel") {
+                tel = string
             }
         }
         
@@ -294,6 +302,7 @@ class ResultTableViewController: UITableViewController, XMLParserDelegate {
         nextView.selectedDate = acquisitionDates[selectedIndex!]
         
         nextView.selectedPlace = placeAddrs[selectedIndex!]
+        nextView.selectedTel = tels[selectedIndex!]
         
         print("imageCount = \(lostImages.count)")
         
